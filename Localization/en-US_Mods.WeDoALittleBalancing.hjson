@@ -1,1 +1,16 @@
+Buffs: {
+	Devastated: {
+		DisplayName: Devastated
+		Description: Mods.WeDoALittleBalancing.Buffs.Devastated.Description
+	}
 
+	Vulnerable: {
+		DisplayName: Vulnerable
+		Description: Mods.WeDoALittleBalancing.Buffs.Vulnerable.Description
+	}
+
+	WreckedResistance: {
+		DisplayName: Wrecked Resistance
+		Description: Mods.WeDoALittleBalancing.Buffs.WreckedResistance.Description
+	}
+}
