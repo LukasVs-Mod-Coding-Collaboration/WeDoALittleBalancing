@@ -28,19 +28,74 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WeDoALittleBalancing.Content.Items;
+using Terraria.ModLoader.IO;
+using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Common.Utilities
 {
     internal class WDALBPlayerUtil : ModPlayer
     {
         public Player player;
+        public int wreckedResistanceStack;
+        public int vulnerableStack;
+        public bool syncDevastated;
+        public int statLifeDevastated;
         public static UnifiedRandom random = new UnifiedRandom();
         public long currentTick;
         
         public override void Initialize()
         {
             player = this.Player;
+            wreckedResistanceStack = 0;
+            vulnerableStack = 0;
+            syncDevastated = false;
+            statLifeDevastated = player.statLifeMax2;
             currentTick = 0;
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            if (tag.ContainsKey("WDALTDevastatedStack"))
+            {
+                statLifeDevastated = tag.GetInt("WDALTDevastatedStack");
+            }
+            if (tag.ContainsKey("WDALTWreckedResistanceStack"))
+            {
+                wreckedResistanceStack = tag.GetInt("WDALTWreckedResistanceStack");
+            }
+            if (tag.ContainsKey("WDALTVulnerableStack"))
+            {
+                vulnerableStack = tag.GetInt("WDALTVulnerableStack");
+            }
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            if (player.HasBuff(ModContent.BuffType<Devastated>()))
+            {
+                tag["WDALTDevastatedStack"] = statLifeDevastated;
+            }
+            if (wreckedResistanceStack > 0)
+            {
+                tag["WDALTWreckedResistanceStack"] = wreckedResistanceStack;
+            }
+            if (vulnerableStack > 0)
+            {
+                tag["WDALTVulnerableStack"] = vulnerableStack;
+            }
+        }
+
+        private void ResetVariables()
+        {
+            wreckedResistanceStack = 0;
+            vulnerableStack = 0;
+            syncDevastated = false;
+            statLifeDevastated = player.statLifeMax2;
+        }
+
+        public override void UpdateDead()
+        {
+            ResetVariables();
         }
 
         public override void PreUpdate()
@@ -51,6 +106,87 @@ namespace WeDoALittleBalancing.Common.Utilities
         public override void PostUpdate()
         {
             GlobalItemList.ModifySetBonus(player);
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (player.HasBuff(ModContent.BuffType<WreckedResistance>()))
+            {
+                float modifierWR = (float)(90 - (wreckedResistanceStack * 10)) * 0.01f;
+                player.DefenseEffectiveness *= modifierWR;
+            }
+            else
+            {
+                wreckedResistanceStack = 0;
+            }
+            if (player.HasBuff(ModContent.BuffType<Vulnerable>()))
+            {
+                float modifierV = (float)(90 - (vulnerableStack * 10)) * 0.01f;
+                player.endurance *= modifierV;
+            }
+            else
+            {
+                vulnerableStack = 0;
+            }
+            if (player.HasBuff(ModContent.BuffType<Devastated>()))
+            {
+                if (syncDevastated && player.statLife < player.statLifeMax2 && player.statLife > 0)
+                {
+                    statLifeDevastated = player.statLife;
+                    syncDevastated = false;
+                }
+                player.statLifeMax2 = statLifeDevastated;
+            }
+            else
+            {
+                statLifeDevastated = player.statLifeMax2;
+            }
+        }
+
+        public override bool ConsumableDodge(Player.HurtInfo info)
+        {
+            if (info.DamageSource.SourceProjectileType == ProjectileID.PhantasmalDeathray)
+            {
+                if (info.DamageSource.SourceProjectileLocalIndex >= 0 && info.DamageSource.SourceProjectileLocalIndex < Main.projectile.Length)
+                {
+                    if (Main.projectile[info.DamageSource.SourceProjectileLocalIndex].GetGlobalProjectile<WDALBProjectileUtil>().TryGetParentNPC(out NPC npc))
+                    {
+                        if (npc.type == NPCID.MoonLordHead && Main.masterMode)
+                        {
+                            Devastated.DisintegratePlayer(player);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return base.ConsumableDodge(info);
+        }
+
+        public override bool FreeDodge(Player.HurtInfo info)
+        {
+            if (info.DamageSource.SourceProjectileType == ProjectileID.PhantasmalDeathray)
+            {
+                if (info.DamageSource.SourceProjectileLocalIndex >= 0 && info.DamageSource.SourceProjectileLocalIndex < Main.projectile.Length)
+                {
+                    if (Main.projectile[info.DamageSource.SourceProjectileLocalIndex].GetGlobalProjectile<WDALBProjectileUtil>().TryGetParentNPC(out NPC npc))
+                    {
+                        if (npc.type == NPCID.MoonLordHead && Main.masterMode)
+                        {
+                            Devastated.DisintegratePlayer(player);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return base.FreeDodge(info);
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            player.buffImmune[ModContent.BuffType<WreckedResistance>()] = false;
+            player.buffImmune[ModContent.BuffType<Vulnerable>()] = false;
+            player.buffImmune[ModContent.BuffType<Devastated>()] = false;
+            base.UpdateLifeRegen();
         }
 
         public static bool IsBossActive()
