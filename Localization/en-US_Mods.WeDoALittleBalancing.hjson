@@ -1,16 +1,20 @@
 Buffs: {
 	Devastated: {
 		DisplayName: Devastated
-		Description: Mods.WeDoALittleBalancing.Buffs.Devastated.Description
+		Description:
+			'''
+			Recently got hit by a devastating attack
+			Cannot recover health lost to devastating attacks
+			'''
 	}
 
 	Vulnerable: {
 		DisplayName: Vulnerable
-		Description: Mods.WeDoALittleBalancing.Buffs.Vulnerable.Description
+		Description: Endurance is decreased by
 	}
 
 	WreckedResistance: {
 		DisplayName: Wrecked Resistance
-		Description: Mods.WeDoALittleBalancing.Buffs.WreckedResistance.Description
+		Description: Defense effectiveness is decreased by
 	}
 }
