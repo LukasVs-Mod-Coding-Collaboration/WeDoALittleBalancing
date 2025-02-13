@@ -843,7 +843,7 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.TacticalShotgun)
             {
-                item.damage = 32;
+                item.damage = 36;
                 item.useTime = 32;
                 item.useAnimation = 32;
                 item.autoReuse = true;
