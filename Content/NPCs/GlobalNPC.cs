@@ -200,6 +200,10 @@ namespace WeDoALittleBalancing.Content.NPCs
 
         public override void SetDefaults(NPC npc)
         {
+            if (WDALBModSystem.isCalamityModPresent)
+            {
+                return;
+            }
             if (KnockbackResistanceGroup.Contains(npc.type))
             {
                 npc.knockBackResist = 0f;
@@ -437,6 +441,10 @@ namespace WeDoALittleBalancing.Content.NPCs
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
             //Decreasing damage during SetDefaults() is unsafe, do it in OnSpawn() instead.
+            if (WDALBModSystem.isCalamityModPresent)
+            {
+                return;
+            }
             if (BuffGroup100Percent.Contains(npc.type))
             {
                 npc.damage = (int)Math.Round(npc.damage * 2.0);

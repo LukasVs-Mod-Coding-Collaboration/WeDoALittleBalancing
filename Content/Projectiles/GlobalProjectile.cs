@@ -132,6 +132,10 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void SetDefaults(Projectile projectile)
         {
+            if (WDALBModSystem.isCalamityModPresent)
+            {
+                return;
+            }
             if (projectile.type == ProjectileID.FrostBlastFriendly)
             {
                 projectile.penetrate = 1;
@@ -296,6 +300,10 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override bool PreAI(Projectile projectile)
         {
+            if (WDALBModSystem.isCalamityModPresent)
+            {
+                return base.PreAI(projectile);
+            }
             if
             (
                 (
@@ -377,6 +385,10 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void AI(Projectile projectile)
         {
+            if (WDALBModSystem.isCalamityModPresent)
+            {
+                return;
+            }
             if (projectile.type == ProjectileID.Bubble)
             {
                 projectile.velocity *= 1.03f;
