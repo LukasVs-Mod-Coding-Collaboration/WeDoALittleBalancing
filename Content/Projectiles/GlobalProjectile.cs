@@ -157,7 +157,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
             }
             if
             (
-                projectile.type == ProjectileID.InfluxWaver ||
                 projectile.type == ProjectileID.FlamingJack ||
                 projectile.type == ProjectileID.DD2BallistraProj
             )
@@ -216,7 +215,9 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.type == ProjectileID.BookStaffShot ||
                 projectile.type == ProjectileID.LunarFlare ||
                 projectile.type == ProjectileID.Bubble ||
-                projectile.type == ProjectileID.Landmine
+                projectile.type == ProjectileID.Landmine ||
+                projectile.type == ProjectileID.DiamondBolt ||
+                projectile.type == ProjectileID.RubyBolt
             )
             {
                 projectile.usesLocalNPCImmunity = true;
@@ -394,7 +395,9 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.type == ProjectileID.FrostBoltStaff ||
                 projectile.type == ProjectileID.UnholyTridentFriendly ||
                 projectile.type == ProjectileID.BookStaffShot ||
-                projectile.type == ProjectileID.LunarFlare
+                projectile.type == ProjectileID.LunarFlare ||
+                projectile.type == ProjectileID.DiamondBolt ||
+                projectile.type == ProjectileID.RubyBolt
             )
             {
                 float lowest_distance = 0f; //Homing detection range
@@ -407,6 +410,8 @@ namespace WeDoALittleBalancing.Content.Projectiles
                         break;
                     case ProjectileID.PoisonFang:
                     case ProjectileID.VenomFang:
+                    case ProjectileID.DiamondBolt:
+                    case ProjectileID.RubyBolt:
                         lowest_distance = 320f;
                         correction_factor = 3.5f;
                         break;
@@ -500,12 +505,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.damage = (int)Math.Round(projectile.damage * 0.75);
                 projectile.netUpdate = true;
             }
-            if (projectile.type == ProjectileID.TrueNightsEdge)
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.5f);
-                projectile.netUpdate = true;
-            }
-            if (projectile.type == ProjectileID.TerraBlade2Shot || projectile.type == ProjectileID.StarWrath)
+            if (projectile.type == ProjectileID.TrueNightsEdge || projectile.type == ProjectileID.TerraBlade2Shot)
             {
                 projectile.damage = (int)Math.Round(projectile.damage * 1.5f);
                 projectile.netUpdate = true;
@@ -687,7 +687,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
         {
             if (projectile.type == ProjectileID.CultistBossIceMist)
             {
-                modifiers.SourceDamage *= 1.75f;
+                modifiers.SourceDamage *= 1.25f;
             }
             if (projectile.type == ProjectileID.PhantasmalDeathray && projectile.GetGlobalProjectile<WDALBProjectileUtil>().TryGetParentNPC(out NPC npc))
             {

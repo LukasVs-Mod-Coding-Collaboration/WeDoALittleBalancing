@@ -82,11 +82,8 @@ namespace WeDoALittleBalancing.Content.NPCs
         {
             NPCID.AngryTrapper,
             NPCID.Mothron,
-            NPCID.Lihzahrd,
-            NPCID.LihzahrdCrawler,
             NPCID.PossessedArmor,
-            NPCID.RockGolem,
-            NPCID.Wolf
+            NPCID.RockGolem
         };
         public static readonly int[] InflictVenomDebuff1In1Group =
         {
@@ -203,14 +200,9 @@ namespace WeDoALittleBalancing.Content.NPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if
-            (
-                npc.type == NPCID.Lihzahrd ||
-                npc.type == NPCID.LihzahrdCrawler ||
-                npc.type == NPCID.FlyingSnake
-            )
+            if (KnockbackResistanceGroup.Contains(npc.type))
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                npc.knockBackResist = 0f;
             }
             if
             (
@@ -220,13 +212,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             )
             {
                 npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-            }
-            if
-            (
-                npc.type == NPCID.PossessedArmor
-            )
-            {
-                npc.lifeMax *= 2;
             }
             if
             (
@@ -246,7 +231,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.Psycho
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
             }
             if
             (
@@ -255,27 +240,15 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.MothronSpawn
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-                npc.damage = (int)Math.Round(npc.damage * 1.5);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
 
             //Boss buffs
 
             if (npc.type == NPCID.EyeofCthulhu)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-                if (Main.getGoodWorld)
-                {
-                    npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(2.0));
-                }
-                else
-                {
-                    npc.damage = (int)Math.Round(npc.damage * 2.0);
-                }
-            }
-            if (npc.type == NPCID.KingSlime)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
                 if (Main.getGoodWorld)
                 {
                     npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.5));
@@ -285,21 +258,20 @@ namespace WeDoALittleBalancing.Content.NPCs
                     npc.damage = (int)Math.Round(npc.damage * 1.5);
                 }
             }
-            if (npc.type == NPCID.SkeletronHead)
+            if (npc.type == NPCID.KingSlime)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if (npc.type == NPCID.SkeletronHand)
-            {
-                npc.lifeMax *= 2;
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
                 if (Main.getGoodWorld)
                 {
-                    npc.damage = (int)Math.Round(npc.damage * 0.5);
+                    npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.25));
+                }
+                else
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 1.25);
                 }
             }
             if (npc.type == NPCID.BrainofCthulhu)
             {
-                npc.lifeMax *= 2;
                 if (Main.getGoodWorld)
                 {
                     npc.defense -= 10;
@@ -315,40 +287,6 @@ namespace WeDoALittleBalancing.Content.NPCs
                 if (Main.getGoodWorld)
                 {
                     npc.knockBackResist = 2.5f;
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * Math.Sqrt(2.0));
-                }
-                else
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-                }
-            }
-            if (npc.type == NPCID.QueenBee)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-                if (Main.getGoodWorld)
-                {
-                    npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.5));
-                }
-                else
-                {
-                    npc.damage = (int)Math.Round(npc.damage * 1.5);
-                }
-            }
-            if
-            (
-                npc.type == NPCID.WallofFlesh ||
-                npc.type == NPCID.WallofFleshEye ||
-                npc.type == NPCID.TheHungry ||
-                npc.type == NPCID.TheHungryII
-            )
-            {
-                if (Main.getGoodWorld)
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * Math.Sqrt(1.75));
-                }
-                else
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
                 }
             }
             if
@@ -366,14 +304,14 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.Plantera
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.25);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
             }
             if
             (
                 npc.type == NPCID.PlanterasTentacle
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if
             (
@@ -384,36 +322,21 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.GolemHeadFree
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if (npc.type == NPCID.HallowBoss)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
             }
             if (npc.type == NPCID.DukeFishron)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
                 npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
             if (npc.type == NPCID.CultistBoss)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-                npc.damage = (int)Math.Round(npc.damage * 1.75);
-            }
-            if
-            (
-                npc.type == NPCID.CultistDragonHead ||
-                npc.type == NPCID.CultistDragonBody1 ||
-                npc.type == NPCID.CultistDragonBody2 ||
-                npc.type == NPCID.CultistDragonBody3 ||
-                npc.type == NPCID.CultistDragonBody4 ||
-                npc.type == NPCID.CultistDragonTail ||
-                npc.type == NPCID.AncientCultistSquidhead ||
-                npc.type == NPCID.AncientLight ||
-                npc.type == NPCID.AncientDoom
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
             if
             (
@@ -424,51 +347,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.MoonLordLeechBlob
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-            }
-            if
-            (
-                npc.type == NPCID.SkeletronPrime ||
-                npc.type == NPCID.PrimeCannon ||
-                npc.type == NPCID.PrimeLaser ||
-                npc.type == NPCID.PrimeSaw ||
-                npc.type == NPCID.PrimeVice
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if
-            (
-                npc.type == NPCID.Retinazer ||
-                npc.type == NPCID.Spazmatism
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if
-            (
-                npc.type == NPCID.TheDestroyer ||
-                npc.type == NPCID.TheDestroyerBody ||
-                npc.type == NPCID.TheDestroyerTail
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-            }
-            if
-            (
-                npc.type == NPCID.QueenSlimeBoss
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-            }
-            if
-            (
-                npc.type == NPCID.EaterofWorldsHead ||
-                npc.type == NPCID.EaterofWorldsBody ||
-                npc.type == NPCID.EaterofWorldsTail
-            )
-            {
-                npc.lifeMax *= 2;
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if (npc.type == NPCID.VileSpitEaterOfWorlds)
             {
@@ -476,46 +355,10 @@ namespace WeDoALittleBalancing.Content.NPCs
             }
             if
             (
-                npc.type == NPCID.DD2DarkMageT1 ||
-                npc.type == NPCID.DD2DarkMageT3
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-            }
-            if
-            (
-                npc.type == NPCID.DD2OgreT2 ||
-                npc.type == NPCID.DD2OgreT3
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if
-            (
                 npc.type == NPCID.DD2Betsy
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-            }
-            if
-            (
-                npc.type == NPCID.PirateShip ||
-                npc.type == NPCID.PirateShipCannon
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if
-            (
-                npc.type == NPCID.MourningWood ||
-                npc.type == NPCID.Splinterling ||
-                npc.type == NPCID.Hellhound ||
-                npc.type == NPCID.Poltergeist ||
-                npc.type == NPCID.HeadlessHorseman ||
-                ScarecrowGroup.Contains(npc.type)
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if
             (
@@ -523,22 +366,8 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.PumpkingBlade
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-                npc.damage = (int)Math.Round(npc.damage * 1.5);
-            }
-            if
-            (
-                npc.type == NPCID.Everscream
-            )
-            {
                 npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if
-            (
-                npc.type == NPCID.SantaNK1
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
             if
             (
@@ -567,56 +396,23 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.BrainScrambler
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
             {
                 //Buff Thorium Bosses Accordingly
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_GTB))
-                {
-                    npc.lifeMax *= 2;
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_QJ))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-                }
                 if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_VC))
-                {
-                    npc.lifeMax *= 2;
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_GES))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_BC))
                 {
                     npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
                 }
                 if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS))
                 {
                     npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                    npc.damage = (int)Math.Round(npc.damage * 1.25);
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_BS_V1) || npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_BS_V2))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_FB_V1) || npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_FB_V2))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
+                    npc.damage = (int)Math.Round(npc.damage * 1.125);
                 }
                 if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V1) || npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V2))
                 {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.25);
-                }
-                if
-                (
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_FO_V1) ||
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_FO_V2) ||
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_FO_V3)
-                )
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.75);
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
                 }
                 if
                 (
@@ -625,14 +421,14 @@ namespace WeDoALittleBalancing.Content.NPCs
                     npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
                 )
                 {
-                    npc.lifeMax *= 2;
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
                 }
                 if
                 (
                     npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET)
                 )
                 {
-                    npc.lifeMax *= 3;
+                    npc.lifeMax *= 2;
                 }
             }
             base.SetDefaults(npc);
@@ -700,18 +496,9 @@ namespace WeDoALittleBalancing.Content.NPCs
                 projectile.damage = (int)Math.Round(projectile.damage * 0.5);
                 projectile.netUpdate = true;
             }
-            if (npc.type == NPCID.HallowBoss)
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.75);
-            }
             if (npc.type == NPCID.CultistBoss && projectile.type != ProjectileID.CultistBossIceMist && projectile.type != ProjectileID.CultistBossLightningOrb)
             {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.75);
-                projectile.netUpdate = true;
-            }
-            if (npc.type == NPCID.QueenBee)
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.5);
+                projectile.damage = (int)Math.Round(projectile.damage * 1.25);
                 projectile.netUpdate = true;
             }
             if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
@@ -722,7 +509,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                     npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS)
                 )
                 {
-                    projectile.damage = (int)Math.Round(projectile.damage * 1.25);
+                    projectile.damage = (int)Math.Round(projectile.damage * 1.125);
                     projectile.netUpdate = true;
                 }
             }
@@ -740,9 +527,9 @@ namespace WeDoALittleBalancing.Content.NPCs
             {
                 modifiers.SourceDamage *= 0.5f;
             }
-            if (npc.type == NPCID.Gnome)
+            if (npc.type == NPCID.Gnome) //I'm gnot a gnelf. I'm gnot a gnoblin. I'm a GNOME! Any you've been GNOOOOOOOMED! Gnomes have 90% DR%
             {
-                modifiers.SourceDamage *= 0.25f;
+                modifiers.SourceDamage *= 0.1f;
             }
             if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
             {
