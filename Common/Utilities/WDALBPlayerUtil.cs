@@ -29,7 +29,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using WeDoALittleBalancing.Content.Items;
 using Terraria.ModLoader.IO;
-using WeDoALittleBalancing.Content.Buffs;
+//using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Common.Utilities
 {
@@ -52,7 +52,7 @@ namespace WeDoALittleBalancing.Common.Utilities
             statLifeDevastated = player.statLifeMax2;
             currentTick = 0;
         }
-
+/*
         public override void LoadData(TagCompound tag)
         {
             if (tag.ContainsKey("WDALTDevastatedStack"))
@@ -84,7 +84,7 @@ namespace WeDoALittleBalancing.Common.Utilities
                 tag["WDALTVulnerableStack"] = vulnerableStack;
             }
         }
-
+*/
         private void ResetVariables()
         {
             wreckedResistanceStack = 0;
@@ -107,7 +107,7 @@ namespace WeDoALittleBalancing.Common.Utilities
         {
             GlobalItemList.ModifySetBonus(player);
         }
-
+/*
         public override void PostUpdateEquips()
         {
             if (player.HasBuff(ModContent.BuffType<WreckedResistance>()))
@@ -188,7 +188,7 @@ namespace WeDoALittleBalancing.Common.Utilities
             player.buffImmune[ModContent.BuffType<Devastated>()] = false;
             base.UpdateLifeRegen();
         }
-
+*/
         public static bool IsBossActive()
         {
             for(int i = 0;i < Main.npc.Length; i++)

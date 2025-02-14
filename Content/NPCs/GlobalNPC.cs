@@ -27,7 +27,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using WeDoALittleBalancing.Common.ModSystems;
-using WeDoALittleBalancing.Content.Buffs;
+//using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Content.NPCs
 {
@@ -120,7 +120,7 @@ namespace WeDoALittleBalancing.Content.NPCs
         {
             NPCID.PrimeVice
         };
-        public static readonly int[] InflictVulnerable1In1Group =
+        /*public static readonly int[] InflictVulnerable1In1Group =
         {
             NPCID.SkeletronHand,
             NPCID.QueenSlimeBoss,
@@ -182,7 +182,7 @@ namespace WeDoALittleBalancing.Content.NPCs
             NPCID.WyvernHead,
             NPCID.SolarCrawltipedeHead,
             NPCID.StardustJellyfishSmall
-        };
+        };*/
 
         public static readonly int[] ScarecrowGroup =
         {
@@ -215,27 +215,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.AngryTrapper
             )
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 2.0);
-            }
-            if
-            (
-                npc.type == NPCID.Eyezor ||
-                npc.type == NPCID.Frankenstein ||
-                npc.type == NPCID.SwampThing ||
-                npc.type == NPCID.VampireBat ||
-                npc.type == NPCID.Vampire ||
-                npc.type == NPCID.CreatureFromTheDeep ||
-                npc.type == NPCID.Fritz ||
-                npc.type == NPCID.ThePossessed ||
-                npc.type == NPCID.Reaper ||
-                npc.type == NPCID.Butcher ||
-                npc.type == NPCID.DeadlySphere ||
-                npc.type == NPCID.DrManFly ||
-                npc.type == NPCID.Nailhead ||
-                npc.type == NPCID.Psycho
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if
             (
@@ -312,13 +292,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             }
             if
             (
-                npc.type == NPCID.PlanterasTentacle
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if
-            (
                 npc.type == NPCID.Golem ||
                 npc.type == NPCID.GolemHead ||
                 npc.type == NPCID.GolemFistLeft ||
@@ -332,14 +305,9 @@ namespace WeDoALittleBalancing.Content.NPCs
             {
                 npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
             }
-            if (npc.type == NPCID.DukeFishron)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                npc.damage = (int)Math.Round(npc.damage * 1.25);
-            }
             if (npc.type == NPCID.CultistBoss)
             {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
                 npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
             if
@@ -356,13 +324,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             if (npc.type == NPCID.VileSpitEaterOfWorlds)
             {
                 npc.dontTakeDamage = true;
-            }
-            if
-            (
-                npc.type == NPCID.DD2Betsy
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
             }
             if
             (
@@ -385,19 +346,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.MartianSaucer ||
                 npc.type == NPCID.MartianSaucerCannon ||
                 npc.type == NPCID.MartianSaucerCore ||
-                npc.type == NPCID.MartianSaucerTurret ||
-                npc.type == NPCID.Scutlix ||
-                npc.type == NPCID.ScutlixRider ||
-                npc.type == NPCID.MartianWalker ||
-                npc.type == NPCID.MartianDrone ||
-                npc.type == NPCID.MartianTurret ||
-                npc.type == NPCID.GigaZapper ||
-                npc.type == NPCID.MartianEngineer ||
-                npc.type == NPCID.MartianOfficer ||
-                npc.type == NPCID.ForceBubble ||
-                npc.type == NPCID.RayGunner ||
-                npc.type == NPCID.GrayGrunt ||
-                npc.type == NPCID.BrainScrambler
+                npc.type == NPCID.MartianSaucerTurret
             )
             {
                 npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
@@ -533,11 +482,11 @@ namespace WeDoALittleBalancing.Content.NPCs
                 npc.type == NPCID.FlyingSnake
             )
             {
-                modifiers.SourceDamage *= 0.5f;
+                modifiers.SourceDamage *= 0.75f;
             }
             if (npc.type == NPCID.Gnome) //I'm gnot a gnelf. I'm gnot a gnoblin. I'm a GNOME! Any you've been GNOOOOOOOMED! Gnomes have 90% DR%
             {
-                modifiers.SourceDamage *= 0.1f;
+                modifiers.SourceDamage *= 0.5f;
             }
             if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
             {
@@ -614,7 +563,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                     target.AddBuff(BuffID.Cursed, 240, true); //4s, X2 in Expert, X2.5 in Master
                 }
             }
-            if (InflictWreckedResistance1In1Group.Contains(npcType))
+            /*if (InflictWreckedResistance1In1Group.Contains(npcType))
             {
                 if (random.Next(0, 1) == 0 && Main.masterMode)
                 {
@@ -635,12 +584,12 @@ namespace WeDoALittleBalancing.Content.NPCs
                     target.AddBuff(ModContent.BuffType<Devastated>(), 3600, true); //1m, X2 in Expert, X2.5 in Master
                     Devastated.DevastatePlayer(target);
                 }
-            }
+            }*/
             if (npcType == NPCID.PossessedArmor)
             {
                 target.AddBuff(BuffID.Blackout, 900, true); //15s, X2 in Expert, X2.5 in Master
             }
-            if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
+            /*if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
             {
                 //Buff Thorium Bosses Accordingly
                 if (WDALBModContentID.GetThoriumBossInflictVulnerable1in1Group().Contains(npcType) && Main.masterMode)
@@ -676,7 +625,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 {
                     target.AddBuff(ModContent.BuffType<WreckedResistance>(), 3600, true); //1m, X2 in Expert, X2.5 in Master
                 }
-            }
+            }*/
         }
     }
 }

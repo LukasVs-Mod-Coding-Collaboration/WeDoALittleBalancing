@@ -27,7 +27,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using WeDoALittleBalancing.Common.Utilities;
 
-
+/*
 namespace WeDoALittleBalancing.Content.Buffs
 {
     public class WreckedResistance : ModBuff
@@ -55,3 +55,4 @@ namespace WeDoALittleBalancing.Content.Buffs
         }
     }
 }
+*/

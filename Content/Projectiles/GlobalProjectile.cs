@@ -30,7 +30,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using WeDoALittleBalancing.Common.Utilities;
 using WeDoALittleBalancing.Common.ModSystems;
-using WeDoALittleBalancing.Content.Buffs;
+//using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Content.Projectiles
 {
@@ -53,7 +53,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
         {
         };
 
-        public static readonly int[] InflictVulnerable1In1Group =
+        /*public static readonly int[] InflictVulnerable1In1Group =
         {
             ProjectileID.SeedPlantera,
             ProjectileID.HallowBossDeathAurora,
@@ -128,7 +128,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
             ProjectileID.HappyBomb,
             ProjectileID.SniperBullet,
             ProjectileID.FlamingScythe
-        };
+        };*/
 
         public override void SetDefaults(Projectile projectile)
         {
@@ -279,7 +279,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
                         {
                             projectile.extraUpdates = 1;
                         }
-                        projectile.extraUpdates *= 4;
+                        projectile.extraUpdates *= 2;
                     }
                     projectile.timeLeft *= 8;
                 }
@@ -597,7 +597,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
                     target.AddBuff(BuffID.Bleeding, 480, true); //8s, X2 in Expert, X2.5 in Master
                 }
             }
-            if (InflictWreckedResistance1In1Group.Contains(projectile.type))
+            /*if (InflictWreckedResistance1In1Group.Contains(projectile.type))
             {
                 if (random.Next(0, 1) == 0 && Main.masterMode)
                 {
@@ -679,7 +679,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
                         target.AddBuff(ModContent.BuffType<Vulnerable>(), 3600, true); //1m, X2 in Expert, X2.5 in Master
                     }
                 }
-            }
+            }*/
             if
             (
                 projectile.type == ProjectileID.DeerclopsIceSpike ||

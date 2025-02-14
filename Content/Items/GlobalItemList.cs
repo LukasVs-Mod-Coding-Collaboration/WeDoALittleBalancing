@@ -74,7 +74,7 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.LeadPickaxe
             )
             {
-                target.AddBuff(BuffID.Poisoned, 1800, false);
+                target.AddBuff(BuffID.Poisoned, 600, false);
             }
             base.OnHitNPC(item, player, target, hit, damageDone);
         }
@@ -115,27 +115,13 @@ namespace WeDoALittleBalancing.Content.Items
             {
                 player.statManaMax2 += 80;
             }
-            if (item.prefix == PrefixID.Warding)
-            {
-                player.endurance += 0.01f;
-            }
-            if (item.prefix == PrefixID.Quick2)
-            {
-                player.GetAttackSpeed(DamageClass.Generic) += 0.04f;
-            }
-            if (item.prefix == PrefixID.Violent)
-            {
-                player.GetArmorPenetration(DamageClass.Melee) += 4f;
-                player.GetArmorPenetration(DamageClass.MeleeNoSpeed) += 4f;
-                player.GetArmorPenetration(DamageClass.SummonMeleeSpeed) += 4f;
-            }
             if (item.type == ItemID.PygmyNecklace)
             {
                 player.maxMinions += 1;
             }
             if (item.type == ItemID.AnkhShield)
             {
-                player.DefenseEffectiveness *= 1.16f;
+                player.DefenseEffectiveness *= 1.08f;
             }
             base.UpdateAccessory(item, player, hideVisual);
         }
@@ -179,50 +165,10 @@ namespace WeDoALittleBalancing.Content.Items
                 List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "PrefixAccMaxMana") && (t.Mod == "Terraria"));
                 infoLine.ForEach(t => t.Text = "+100 mana");
             }
-            if (item.prefix == PrefixID.Warding)
-            {
-                List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "PrefixAccDefense") && (t.Mod == "Terraria"));
-                infoLine.ForEach(t => t.Text = "+4 defense\n+1% reduced damage taken");
-            }
-            if (item.prefix == PrefixID.Quick2)
-            {
-                List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "PrefixAccMoveSpeed") && (t.Mod == "Terraria"));
-                infoLine.ForEach(t => t.Text = t.Text + "\n+4% attack speed");
-            }
-            if (item.prefix == PrefixID.Violent)
-            {
-                List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "PrefixAccMeleeSpeed") && (t.Mod == "Terraria"));
-                infoLine.ForEach(t => t.Text = t.Text + "\n+4 melee armor penetration");
-            }
             if (item.type == ItemID.SpectreHood)
             {
                 TooltipLine extraManaLine = new TooltipLine(Mod, "PrefixAccMaxMana", "Increases maximum mana by 60");
                 tooltips.Add(extraManaLine);
-            }
-            if (item.type == ItemID.ScytheWhip) //Dark Harvest
-            {
-                TooltipLine extraLoreLine = new TooltipLine(Mod, "Lore", "\"The harvest is bountiful this year\"");
-                tooltips.Add(extraLoreLine);
-            }
-            if (item.type == ItemID.Bananarang)
-            {
-                TooltipLine extraLoreLine = new TooltipLine(Mod, "Lore", "\"Oh, these are some pretty cool bananas!\"");
-                tooltips.Add(extraLoreLine);
-            }
-            if (item.type == ItemID.BoulderStatue)
-            {
-                TooltipLine extraLoreLine = new TooltipLine(Mod, "Lore", "\"We remember the Boulder.\"");
-                tooltips.Add(extraLoreLine);
-            }
-            if (item.type == ItemID.ChlorophytePartisan)
-            {
-                TooltipLine extraManaLine = new TooltipLine(Mod, "WeaponLeechingDescription", "Recovers 5% of damage as health\nHeals up to 10 health per hit\nHeals less health the faster\nyou strike enemies\nHeals 75% less while immune");
-                tooltips.Add(extraManaLine);
-            }
-            if (item.type == ItemID.ThunderStaff)
-            {
-                TooltipLine extraThunderspellLine = new TooltipLine(Mod, "WeaponLeechingDescription", "\"I CAST THUNDERSPELL!!\"");
-                tooltips.Add(extraThunderspellLine);
             }
             if
             (
@@ -286,15 +232,6 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if
             (
-                item.type == ItemID.RazorbladeTyphoon ||
-                item.type == ItemID.BubbleGun
-            )
-            {
-                TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ExtraArmorPenetrationDescription", "Ignores 20 points of enemy Defense");
-                tooltips.Add(extraCritChanceLine);
-            }
-            if
-            (
                 item.type == ItemID.PygmyNecklace
             )
             {
@@ -307,7 +244,7 @@ namespace WeDoALittleBalancing.Content.Items
             )
             {
                 List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "Defense") && (t.Mod == "Terraria"));
-                infoLine.ForEach(t => t.Text = t.Text + "\n16% increased defense effectiveness");
+                infoLine.ForEach(t => t.Text = t.Text + "\n8% increased defense effectiveness");
             }
             if
             (
@@ -341,13 +278,6 @@ namespace WeDoALittleBalancing.Content.Items
                 if (type == ProjectileID.WoodenArrowFriendly)
                 {
                     type = ProjectileID.HolyArrow;
-                }
-            }
-            if (item.type == ItemID.LeadBow)
-            {
-                if (type == ProjectileID.WoodenArrowFriendly)
-                {
-                    type = ProjectileID.PoisonDartBlowgun;
                 }
             }
             base.ModifyShootStats(item, player, ref position, ref velocity, ref type, ref damage, ref knockback);
@@ -441,7 +371,7 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.MonkStaffT2)
             {
-                item.damage = 55;
+                item.damage = 50;
             }
             if (item.type == ItemID.MonkStaffT3)
             {
@@ -481,11 +411,11 @@ namespace WeDoALittleBalancing.Content.Items
                 item.useTime = 18;
                 item.useAnimation = 18;
                 item.shootsEveryUse = true;
-                item.crit = 2;
+                item.crit = 8;
             }
             if (item.type == ItemID.FlintlockPistol)
             {
-                item.damage = 15;
+                item.damage = 18;
             }
             if (item.type == ItemID.FlareGun)
             {
@@ -590,7 +520,7 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.AntlionClaw) //Mandible Blade
             {
-                item.damage = 18;
+                item.damage = 20;
             }
             if (item.type == ItemID.ChainKnife)
             {
@@ -607,10 +537,6 @@ namespace WeDoALittleBalancing.Content.Items
             if (item.type == ItemID.ThunderStaff)
             {
                 item.damage = 22;
-            }
-            if (item.type == ItemID.Starfury)
-            {
-                item.damage = 28;
             }
             if
             (
@@ -851,7 +777,7 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.SniperRifle)
             {
-                item.damage = 320;
+                item.damage = 240;
                 item.crit = 28;
                 item.useTime = 32;
                 item.useAnimation = 32;
@@ -915,8 +841,7 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.LeadAxe ||
                 item.type == ItemID.LeadBroadsword ||
                 item.type == ItemID.LeadHammer ||
-                item.type == ItemID.LeadPickaxe ||
-                item.type == ItemID.LeadBow
+                item.type == ItemID.LeadPickaxe
             )
             {
                 item.useTime = (int)Math.Round((double)item.useTime * 1.3);
