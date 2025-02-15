@@ -517,11 +517,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.damage = (int)Math.Round(projectile.damage * 0.75);
                 projectile.netUpdate = true;
             }
-            if (projectile.type == ProjectileID.TrueNightsEdge || projectile.type == ProjectileID.TerraBlade2Shot)
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.5f);
-                projectile.netUpdate = true;
-            }
             if (projectile.type == ProjectileID.OrnamentFriendly)
             {
                 projectile.damage = (int)Math.Round(projectile.damage * 0.5f);
