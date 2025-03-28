@@ -271,29 +271,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
                         }
                     }
                 }
-                if (projectile.type == WDALBModContentID.GetThoriumBossProjectileID(WDALBModContentID.ThoriumBossProjectile_SFF_V1))
-                {
-                    if (Main.expertMode)
-                    {
-                        if (projectile.extraUpdates < 1)
-                        {
-                            projectile.extraUpdates = 1;
-                        }
-                        projectile.extraUpdates *= 2;
-                    }
-                    projectile.timeLeft *= 8;
-                }
-                if (projectile.type == WDALBModContentID.GetThoriumBossProjectileID(WDALBModContentID.ThoriumBossProjectile_SFF_V2))
-                {
-                    if (Main.expertMode)
-                    {
-                        if (projectile.extraUpdates < 1)
-                        {
-                            projectile.extraUpdates = 1;
-                        }
-                    }
-                    projectile.timeLeft *= 8;
-                }
             }
             base.SetDefaults(projectile);
         }
