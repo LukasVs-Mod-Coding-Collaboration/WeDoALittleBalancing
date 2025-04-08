@@ -308,7 +308,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             if (npc.type == NPCID.CultistBoss)
             {
                 npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
-                npc.damage = (int)Math.Round(npc.damage * 1.25);
             }
             if
             (
@@ -451,11 +450,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             if (NerfGroup50Percent.Contains(npc.type))
             {
                 projectile.damage = (int)Math.Round(projectile.damage * 0.5);
-                projectile.netUpdate = true;
-            }
-            if (npc.type == NPCID.CultistBoss && projectile.type != ProjectileID.CultistBossIceMist && projectile.type != ProjectileID.CultistBossLightningOrb)
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.25);
                 projectile.netUpdate = true;
             }
             if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)

@@ -669,10 +669,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void ModifyHitPlayer(Projectile projectile, Player target, ref Player.HurtModifiers modifiers)
         {
-            if (projectile.type == ProjectileID.CultistBossIceMist)
-            {
-                modifiers.SourceDamage *= 1.25f;
-            }
             if (projectile.type == ProjectileID.PhantasmalDeathray && projectile.GetGlobalProjectile<WDALBProjectileUtil>().TryGetParentNPC(out NPC npc))
             {
                 if (npc.type == NPCID.MoonLordFreeEye)
