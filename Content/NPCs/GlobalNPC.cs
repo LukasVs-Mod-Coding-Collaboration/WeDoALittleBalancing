@@ -355,7 +355,7 @@ namespace WeDoALittleBalancing.Content.NPCs
                 //Buff Thorium Bosses Accordingly
                 if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_VC))
                 {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.35);
                 }
                 if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS))
                 {
@@ -373,14 +373,14 @@ namespace WeDoALittleBalancing.Content.NPCs
                     npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
                 )
                 {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
                 }
                 if
                 (
                     npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET)
                 )
                 {
-                    npc.lifeMax *= 2;
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
                 }
             }
             base.SetDefaults(npc);
