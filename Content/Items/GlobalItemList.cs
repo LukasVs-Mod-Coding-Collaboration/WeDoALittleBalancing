@@ -111,10 +111,6 @@ namespace WeDoALittleBalancing.Content.Items
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (item.prefix == PrefixID.Arcane)
-            {
-                player.statManaMax2 += 80;
-            }
             if (item.type == ItemID.PygmyNecklace)
             {
                 player.maxMinions += 1;
@@ -160,11 +156,6 @@ namespace WeDoALittleBalancing.Content.Items
         //Adjust Tooltips accordingly
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.prefix == PrefixID.Arcane)
-            {
-                List<TooltipLine> infoLine = tooltips.FindAll(t => (t.Name == "PrefixAccMaxMana") && (t.Mod == "Terraria"));
-                infoLine.ForEach(t => t.Text = "+100 mana");
-            }
             if (item.type == ItemID.SpectreHood)
             {
                 TooltipLine extraManaLine = new TooltipLine(Mod, "PrefixAccMaxMana", "Increases maximum mana by 60");
