@@ -169,8 +169,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
             }
             if
             (
-                projectile.aiStyle == ProjAIStyleID.TerrarianBeam ||
-                projectile.aiStyle == ProjAIStyleID.Yoyo ||
                 projectile.type == ProjectileID.UnholyArrow ||
                 projectile.type == ProjectileID.JestersArrow ||
                 projectile.type == ProjectileID.HellfireArrow ||
