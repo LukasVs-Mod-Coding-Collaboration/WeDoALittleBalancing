@@ -334,15 +334,15 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.FlamingMace)
             {
-                item.damage = 20;
+                item.damage = (int)Math.Round(20.0 / 2.0); //Terraria.ID.ItemID.Sets.ToolTipDamageMultiplier == 2.0
             }
             if (item.type == ItemID.BlueMoon)
             {
-                item.damage = 60;
+                item.damage = (int)Math.Round(60.0 / 2.0); //Terraria.ID.ItemID.Sets.ToolTipDamageMultiplier == 2.0
             }
             if (item.type == ItemID.Sunfury)
             {
-                item.damage = 70;
+                item.damage = (int)Math.Round(70.0 / 2.0); //Terraria.ID.ItemID.Sets.ToolTipDamageMultiplier == 2.0
             }
             if (item.type == ItemID.DarkLance)
             {
