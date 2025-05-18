@@ -647,16 +647,6 @@ namespace WeDoALittleBalancing.Content.Items
             {
                 item.damage = 28;
             }
-            if
-            (
-                item.type == ItemID.DiamondStaff ||
-                item.type == ItemID.RubyStaff
-            )
-            {
-                item.useTime = 22;
-                item.useAnimation = 22;
-                item.shootsEveryUse = true;
-            }
             if (item.type == ItemID.BlizzardStaff)
             {
                 item.damage = 48;
