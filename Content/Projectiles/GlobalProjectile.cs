@@ -279,22 +279,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
             {
                 return base.PreAI(projectile);
             }
-            if
-            (
-                (
-                    projectile.type == ProjectileID.DD2BallistraTowerT1 ||
-                    projectile.type == ProjectileID.DD2BallistraTowerT2 ||
-                    projectile.type == ProjectileID.DD2BallistraTowerT3
-                )
-            )
-            {
-                int newShotDelay = Projectile.GetBallistraShotDelay(Main.player[projectile.owner]);
-                newShotDelay = (int)Math.Round((double)newShotDelay * 0.875);
-                if (projectile.ai[1] > newShotDelay)
-                {
-                    projectile.ai[1] = newShotDelay;
-                }
-            }
             if (projectile.type == ProjectileID.IceBoomerang)
             {
                 int baseSoundDelay = 8;
