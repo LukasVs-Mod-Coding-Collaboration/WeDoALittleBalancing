@@ -211,18 +211,6 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if
             (
-                item.type == ItemID.StaffoftheFrostHydra ||
-                item.type == ItemID.QueenSpiderStaff ||
-                item.type == ItemID.HoundiusShootius ||
-                item.type == ItemID.RainbowCrystalStaff ||
-                item.type == ItemID.MoonlordTurretStaff
-            )
-            {
-                TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ExtraCritChanceDescription", "Projectiles have a 15% chance to land a critical strike");
-                tooltips.Add(extraCritChanceLine);
-            }
-            if
-            (
                 item.type == ItemID.PygmyNecklace
             )
             {

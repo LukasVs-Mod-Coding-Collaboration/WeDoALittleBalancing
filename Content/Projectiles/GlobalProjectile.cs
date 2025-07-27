@@ -666,21 +666,6 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if
-            (
-                projectile.type == ProjectileID.FrostBlastFriendly ||
-                projectile.type == ProjectileID.BabySpider ||
-                projectile.type == ProjectileID.SpiderEgg ||
-                projectile.type == ProjectileID.HoundiusShootiusFireball ||
-                projectile.type == ProjectileID.MoonlordTurretLaser ||
-                projectile.type == ProjectileID.RainbowCrystalExplosion
-            )
-            {
-                if (random.Next(0, 100) < 15)
-                {
-                    modifiers.SetCrit();
-                }
-            }
             if (projectile.type == ProjectileID.CoolWhipProj)
             {
                 modifiers.SourceDamage *= 4f;
