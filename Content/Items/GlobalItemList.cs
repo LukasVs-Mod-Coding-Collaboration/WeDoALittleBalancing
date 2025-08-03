@@ -340,10 +340,6 @@ namespace WeDoALittleBalancing.Content.Items
             {
                 item.crit = 2;
             }
-            if (item.type == ItemID.InfluxWaver)
-            {
-                item.damage = 75;
-            }
             if (item.type == ItemID.MonkStaffT1)
             {
                 item.damage = 55;
