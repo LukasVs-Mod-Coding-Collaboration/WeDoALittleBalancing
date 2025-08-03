@@ -356,6 +356,10 @@ namespace WeDoALittleBalancing.Content.Items
             {
                 item.damage = 20;
             }
+            if (item.type == ItemID.EmpressBlade)
+            {
+                item.damage = 100;
+            }
             if (item.type == ItemID.Arkhalis)
             {
                 item.damage = 35;
