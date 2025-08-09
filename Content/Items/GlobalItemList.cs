@@ -811,7 +811,10 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.AmethystStaff ||
                 item.type == ItemID.TopazStaff ||
                 item.type == ItemID.SapphireStaff ||
-                item.type == ItemID.EmeraldStaff
+                item.type == ItemID.EmeraldStaff ||
+                item.type == ItemID.RubyStaff ||
+                item.type == ItemID.DiamondStaff ||
+                item.type == ItemID.AmberStaff
             )
             {
                 item.damage += 2;
