@@ -219,7 +219,8 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.type == ProjectileID.Bubble ||
                 projectile.type == ProjectileID.Landmine ||
                 projectile.type == ProjectileID.DiamondBolt ||
-                projectile.type == ProjectileID.RubyBolt
+                projectile.type == ProjectileID.RubyBolt ||
+                projectile.type == ProjectileID.AmberBolt
             )
             {
                 projectile.usesLocalNPCImmunity = true;
@@ -368,7 +369,8 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.type == ProjectileID.BookStaffShot ||
                 projectile.type == ProjectileID.LunarFlare ||
                 projectile.type == ProjectileID.DiamondBolt ||
-                projectile.type == ProjectileID.RubyBolt
+                projectile.type == ProjectileID.RubyBolt ||
+                projectile.type == ProjectileID.AmberBolt
             )
             {
                 float lowest_distance = 0f; //Homing detection range
@@ -383,6 +385,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
                     case ProjectileID.VenomFang:
                     case ProjectileID.DiamondBolt:
                     case ProjectileID.RubyBolt:
+                    case ProjectileID.AmberBolt:
                         lowest_distance = 320f;
                         correction_factor = 3.5f;
                         break;

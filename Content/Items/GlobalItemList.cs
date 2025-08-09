@@ -203,7 +203,8 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.LunarFlareBook ||
                 item.type == ItemID.BubbleGun ||
                 item.type == ItemID.DiamondStaff ||
-                item.type == ItemID.RubyStaff
+                item.type == ItemID.RubyStaff ||
+                item.type == ItemID.AmberStaff
             )
             {
                 TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ProjectileHomingDescription", "Projectiles move towards the closest target");
@@ -804,6 +805,18 @@ namespace WeDoALittleBalancing.Content.Items
             if (item.type == ItemID.FireworksLauncher)
             {
                 item.damage = 35;
+            }
+            if
+            (
+                item.type == ItemID.AmethystStaff ||
+                item.type == ItemID.TopazStaff ||
+                item.type == ItemID.SapphireStaff ||
+                item.type == ItemID.EmeraldStaff
+            )
+            {
+                item.damage += 2;
+                item.autoReuse = true;
+                item.mana -= 2;
             }
             if
             (
