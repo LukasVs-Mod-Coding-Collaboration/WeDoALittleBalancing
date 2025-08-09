@@ -210,6 +210,11 @@ namespace WeDoALittleBalancing.Content.Items
                 TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ProjectileHomingDescription", "Projectiles move towards the closest target");
                 tooltips.Add(extraCritChanceLine);
             }
+            if (item.type == ItemID.ThunderStaff)
+            {
+                TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ProjectileHomingDescription", "Projectiles move towards the closest target until they pierce");
+                tooltips.Add(extraCritChanceLine);
+            }
             if
             (
                 item.type == ItemID.PygmyNecklace
@@ -516,7 +521,9 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.ThunderStaff)
             {
-                item.damage = 22;
+                item.damage = 25;
+                item.mana -= 2;
+                item.crit = 6;
             }
             if
             (
