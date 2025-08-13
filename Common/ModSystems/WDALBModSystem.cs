@@ -22,6 +22,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
+using WeDoALittleBalancing.Content.Items;
 
 namespace WeDoALittleBalancing.Common.ModSystems
 {
@@ -94,12 +95,12 @@ namespace WeDoALittleBalancing.Common.ModSystems
 
         public static void RegisterHooks()
         {
-
+            GlobalItemList.RegisterHooks();
         }
 
         public static void UnregisterHooks()
         {
-
+            GlobalItemList.UnregisterHooks();
         }
 
         public static bool TryGetCalamityMod(out Mod calamityMod)

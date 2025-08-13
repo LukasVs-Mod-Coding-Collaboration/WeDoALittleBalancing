@@ -64,6 +64,35 @@ namespace WeDoALittleBalancing.Content.Items
             ItemID.EmpressBlade
         };
 
+        public static void RegisterHooks()
+        {
+            On_Player.ItemCheck_UseTeleportRod += On_Player_ItemCheck_UseTeleportRod;
+        }
+
+        public static void UnregisterHooks()
+        {
+            On_Player.ItemCheck_UseTeleportRod -= On_Player_ItemCheck_UseTeleportRod;
+        }
+
+        public static void On_Player_ItemCheck_UseTeleportRod(On_Player.orig_ItemCheck_UseTeleportRod orig, Player self, Item sItem)
+        {
+            bool harmony = (sItem.type == ItemID.RodOfHarmony);
+            if (harmony)
+            {
+                Item imanginaryRodOfDiscord = new Item(ItemID.RodofDiscord, 1, 0);
+                orig.Invoke(self, imanginaryRodOfDiscord);
+                if (self.itemAnimation > 0 && self.chaosState)
+                {
+                    int idx = self.FindBuffIndex(BuffID.ChaosState);
+                    if (idx >= 0 && idx < self.buffTime.Length)
+                    {
+                        self.buffTime[idx] = 180;
+                    }
+                }
+            }
+            orig.Invoke(self, sItem);
+        }
+
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if
