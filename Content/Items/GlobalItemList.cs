@@ -552,8 +552,9 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.ThunderStaff)
             {
+                item.damage = 22;
                 item.mana -= 2;
-                item.crit = 6;
+                item.crit = 2;
             }
             if
             (
@@ -854,6 +855,7 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.AmberStaff
             )
             {
+                item.damage += 2;
                 item.autoReuse = true;
                 item.mana -= 2;
             }
