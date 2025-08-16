@@ -275,16 +275,6 @@ namespace WeDoALittleBalancing.Content.NPCs
             }
             if
             (
-                npc.type == NPCID.FireImp
-            )
-            {
-                if (Main.getGoodWorld)
-                {
-                    npc.defense -= 8;
-                }
-            }
-            if
-            (
                 npc.type == NPCID.Plantera
             )
             {
