@@ -853,7 +853,6 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.AmberStaff
             )
             {
-                item.damage += 2;
                 item.autoReuse = true;
                 item.mana -= 2;
             }

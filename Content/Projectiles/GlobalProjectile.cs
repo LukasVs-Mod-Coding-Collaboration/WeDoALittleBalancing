@@ -166,7 +166,11 @@ namespace WeDoALittleBalancing.Content.Projectiles
             if
             (
                 projectile.type == ProjectileID.FlamingJack ||
-                projectile.type == ProjectileID.DD2BallistraProj
+                projectile.type == ProjectileID.DD2BallistraProj ||
+                projectile.type == ProjectileID.AmethystBolt ||
+                projectile.type == ProjectileID.TopazBolt ||
+                projectile.type == ProjectileID.SapphireBolt ||
+                projectile.type == ProjectileID.EmeraldBolt
             )
             {
                 projectile.extraUpdates = 1;
