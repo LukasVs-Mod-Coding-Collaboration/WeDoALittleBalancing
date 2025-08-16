@@ -229,17 +229,19 @@ namespace WeDoALittleBalancing.Content.Items
                 item.type == ItemID.FrostStaff ||
                 item.type == ItemID.UnholyTrident ||
                 item.type == ItemID.BookStaff ||
-                item.type == ItemID.LunarFlareBook ||
-                item.type == ItemID.BubbleGun ||
-                item.type == ItemID.DiamondStaff ||
-                item.type == ItemID.RubyStaff ||
-                item.type == ItemID.AmberStaff
+                item.type == ItemID.LunarFlareBook
             )
             {
                 TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ProjectileHomingDescription", "Projectiles move towards the closest target");
                 tooltips.Add(extraCritChanceLine);
             }
-            if (item.type == ItemID.ThunderStaff)
+            if
+            (
+                item.type == ItemID.ThunderStaff ||
+                item.type == ItemID.DiamondStaff ||
+                item.type == ItemID.RubyStaff ||
+                item.type == ItemID.AmberStaff
+            )
             {
                 TooltipLine extraCritChanceLine = new TooltipLine(Mod, "ProjectileHomingDescription", "Projectiles move towards the closest target until they pierce");
                 tooltips.Add(extraCritChanceLine);
@@ -550,7 +552,6 @@ namespace WeDoALittleBalancing.Content.Items
             }
             if (item.type == ItemID.ThunderStaff)
             {
-                item.damage = 25;
                 item.mana -= 2;
                 item.crit = 6;
             }

@@ -377,9 +377,9 @@ namespace WeDoALittleBalancing.Content.Projectiles
                 projectile.type == ProjectileID.UnholyTridentFriendly ||
                 projectile.type == ProjectileID.BookStaffShot ||
                 projectile.type == ProjectileID.LunarFlare ||
-                projectile.type == ProjectileID.DiamondBolt ||
-                projectile.type == ProjectileID.RubyBolt ||
-                projectile.type == ProjectileID.AmberBolt ||
+                (projectile.type == ProjectileID.DiamondBolt && projectile.penetrate >= projectile.maxPenetrate) ||
+                (projectile.type == ProjectileID.RubyBolt && projectile.penetrate >= projectile.maxPenetrate) ||
+                (projectile.type == ProjectileID.AmberBolt && projectile.penetrate >= projectile.maxPenetrate) ||
                 (projectile.type == ProjectileID.ThunderStaffShot && projectile.penetrate >= projectile.maxPenetrate)
             )
             {
