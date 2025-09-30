@@ -22,6 +22,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
+using WeDoALittleBalancing.Common.Configs;
 using WeDoALittleBalancing.Content.Items;
 
 namespace WeDoALittleBalancing.Common.ModSystems
@@ -75,7 +76,14 @@ namespace WeDoALittleBalancing.Common.ModSystems
                 WeDoALittleBalancing.logger.Warn("Calamity Mod detected.");
                 WeDoALittleBalancing.logger.Warn("WeDoALittleBalancing may not work well together with Calamity Mod.");
                 WeDoALittleBalancing.logger.Warn("Most rebalancing features of WeDoALittleBalancing are not compatible with Calamity Mod.");
-                WeDoALittleBalancing.logger.Warn("Disabling most rebalancing features of WeDoALittleBalancing to ensure the game stays playable...");
+                if (!ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
+                {
+                    WeDoALittleBalancing.logger.Warn("Disabling most rebalancing features of WeDoALittleBalancing to ensure the game stays playable...");
+                }
+                else
+                {
+                    WeDoALittleBalancing.logger.Warn("Keeping all rebalancing features of WeDoALittleBalancing enabled anyways because of server configuration...");
+                }
             }
             MCIDIntegrity = WDALBModContentID.SetContentIDs();
             if (!MCIDIntegrity)

@@ -27,6 +27,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using WeDoALittleBalancing.Common.ModSystems;
+using WeDoALittleBalancing.Common.Configs;
 //using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Content.NPCs
@@ -200,7 +201,7 @@ namespace WeDoALittleBalancing.Content.NPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return;
             }
@@ -379,7 +380,7 @@ namespace WeDoALittleBalancing.Content.NPCs
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
             //Decreasing damage during SetDefaults() is unsafe, do it in OnSpawn() instead.
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return;
             }
@@ -413,7 +414,7 @@ namespace WeDoALittleBalancing.Content.NPCs
 
         public static void OnSpawnProjectile(NPC npc, Projectile projectile)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return;
             }

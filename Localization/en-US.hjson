@@ -1,0 +1,24 @@
+Mods: {
+	WeDoALittleBalancing: {
+		Configs: {
+			WDALBServerConfig: {
+				DisplayName: Server Configuration
+
+				Headers: {
+					Items: Items
+					OtherMods: Other Mods
+				}
+
+				DisableRodOfHarmonyCooldown: {
+					Label: Disable Rod Of Harmony Cooldown
+					Tooltip: Prevents the Rod Of Harmony from giving players the "Chaos State" debuff upon use.
+				}
+
+				DisableCalamityCompatibilityMode: {
+					Label: Disable Calamity Compatibility Mode
+					Tooltip: Force-enables all balancing features even when Calamity Mod is detected.
+				}
+			}
+		}
+	}
+}

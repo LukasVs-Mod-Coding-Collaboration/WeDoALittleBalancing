@@ -36,6 +36,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent.Items;
 using WeDoALittleBalancing.Common.Utilities;
 using WeDoALittleBalancing.Common.ModSystems;
+using WeDoALittleBalancing.Common.Configs;
 
 namespace WeDoALittleBalancing.Content.Items
 {
@@ -66,12 +67,18 @@ namespace WeDoALittleBalancing.Content.Items
 
         public static void RegisterHooks()
         {
-            On_Player.ItemCheck_UseTeleportRod += On_Player_ItemCheck_UseTeleportRod;
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRodOfHarmonyCooldown)
+            {
+                On_Player.ItemCheck_UseTeleportRod += On_Player_ItemCheck_UseTeleportRod;
+            }
         }
 
         public static void UnregisterHooks()
         {
-            On_Player.ItemCheck_UseTeleportRod -= On_Player_ItemCheck_UseTeleportRod;
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRodOfHarmonyCooldown)
+            {
+                On_Player.ItemCheck_UseTeleportRod -= On_Player_ItemCheck_UseTeleportRod;
+            }
         }
 
         public static void On_Player_ItemCheck_UseTeleportRod(On_Player.orig_ItemCheck_UseTeleportRod orig, Player self, Item sItem)
@@ -306,7 +313,7 @@ namespace WeDoALittleBalancing.Content.Items
 
         public override void SetDefaults(Item item)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 base.SetDefaults(item);
                 return;

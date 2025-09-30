@@ -30,6 +30,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Utilities;
 using WeDoALittleBalancing.Common.Utilities;
 using WeDoALittleBalancing.Common.ModSystems;
+using WeDoALittleBalancing.Common.Configs;
 //using WeDoALittleBalancing.Content.Buffs;
 
 namespace WeDoALittleBalancing.Content.Projectiles
@@ -132,7 +133,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void SetDefaults(Projectile projectile)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return;
             }
@@ -285,7 +286,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override bool PreAI(Projectile projectile)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return base.PreAI(projectile);
             }
@@ -354,7 +355,7 @@ namespace WeDoALittleBalancing.Content.Projectiles
 
         public override void AI(Projectile projectile)
         {
-            if (WDALBModSystem.isCalamityModPresent)
+            if (WDALBModSystem.isCalamityModPresent && !ModContent.GetInstance<WDALBServerConfig>().DisableCalamityCompatibilityMode)
             {
                 return;
             }
