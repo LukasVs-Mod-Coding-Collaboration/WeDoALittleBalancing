@@ -8,6 +8,12 @@ namespace WeDoALittleBalancing.Common.Configs
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
 
+        [Header("Balancing")]
+
+        [DefaultValue(false)]
+        [ReloadRequired]
+        public bool DisableRebalancing;
+        
         [Header("Items")]
 
         [DefaultValue(false)]

@@ -7,6 +7,7 @@ Mods: {
 				Headers: {
 					Items: Items
 					OtherMods: Other Mods
+					Balancing: Balancing
 				}
 
 				DisableRodOfHarmonyCooldown: {
@@ -17,6 +18,11 @@ Mods: {
 				DisableCalamityCompatibilityMode: {
 					Label: Disable Calamity Compatibility Mode
 					Tooltip: Force-enables all balancing features even when Calamity Mod is detected.
+				}
+
+				DisableRebalancing: {
+					Label: Disable Rebalancing
+					Tooltip: Disables most vanilla rebalancing features.
 				}
 			}
 		}

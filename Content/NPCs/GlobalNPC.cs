@@ -205,173 +205,176 @@ namespace WeDoALittleBalancing.Content.NPCs
             {
                 return;
             }
-            if (KnockbackResistanceGroup.Contains(npc.type))
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRebalancing)
             {
-                npc.knockBackResist = 0f;
-            }
-            if
-            (
-                npc.type == NPCID.Snatcher ||
-                npc.type == NPCID.ManEater ||
-                npc.type == NPCID.AngryTrapper
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if
-            (
-                npc.type == NPCID.Mothron ||
-                npc.type == NPCID.MothronEgg ||
-                npc.type == NPCID.MothronSpawn
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-                npc.damage = (int)Math.Round(npc.damage * 1.25);
-            }
-
-            //Boss buffs
-
-            if (npc.type == NPCID.EyeofCthulhu)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                if (Main.getGoodWorld)
-                {
-                    npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.5));
-                }
-                else
-                {
-                    npc.damage = (int)Math.Round(npc.damage * 1.5);
-                }
-            }
-            if (npc.type == NPCID.KingSlime)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                if (Main.getGoodWorld)
-                {
-                    npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.25));
-                }
-                else
-                {
-                    npc.damage = (int)Math.Round(npc.damage * 1.25);
-                }
-            }
-            if (npc.type == NPCID.BrainofCthulhu)
-            {
-                if (Main.getGoodWorld)
-                {
-                    npc.defense -= 10;
-                    npc.knockBackResist = 1.25f;
-                }
-                else
+                if (KnockbackResistanceGroup.Contains(npc.type))
                 {
                     npc.knockBackResist = 0f;
                 }
-            }
-            if (npc.type == NPCID.Creeper)
-            {
-                if (Main.getGoodWorld)
-                {
-                    npc.knockBackResist = 2.5f;
-                }
-            }
-            if
-            (
-                npc.type == NPCID.Plantera
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-            }
-            if
-            (
-                npc.type == NPCID.Golem ||
-                npc.type == NPCID.GolemHead ||
-                npc.type == NPCID.GolemFistLeft ||
-                npc.type == NPCID.GolemFistRight ||
-                npc.type == NPCID.GolemHeadFree
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if (npc.type == NPCID.HallowBoss)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
-            }
-            if (npc.type == NPCID.CultistBoss)
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
-            }
-            if
-            (
-                npc.type == NPCID.MoonLordCore ||
-                npc.type == NPCID.MoonLordHead ||
-                npc.type == NPCID.MoonLordHand ||
-                npc.type == NPCID.MoonLordFreeEye ||
-                npc.type == NPCID.MoonLordLeechBlob
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if (npc.type == NPCID.VileSpitEaterOfWorlds)
-            {
-                npc.dontTakeDamage = true;
-            }
-            if
-            (
-                npc.type == NPCID.Pumpking ||
-                npc.type == NPCID.PumpkingBlade
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                npc.damage = (int)Math.Round(npc.damage * 1.25);
-            }
-            if
-            (
-                npc.type == NPCID.IceQueen
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if
-            (
-                npc.type == NPCID.MartianSaucer ||
-                npc.type == NPCID.MartianSaucerCannon ||
-                npc.type == NPCID.MartianSaucerCore ||
-                npc.type == NPCID.MartianSaucerTurret
-            )
-            {
-                npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-            }
-            if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
-            {
-                //Buff Thorium Bosses Accordingly
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_VC))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.35);
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
-                    npc.damage = (int)Math.Round(npc.damage * 1.125);
-                }
-                if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V1) || npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V2))
-                {
-                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
-                }
                 if
                 (
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_OLD) ||
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SFF) ||
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
+                    npc.type == NPCID.Snatcher ||
+                    npc.type == NPCID.ManEater ||
+                    npc.type == NPCID.AngryTrapper
                 )
                 {
                     npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
                 }
                 if
                 (
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET)
+                    npc.type == NPCID.Mothron ||
+                    npc.type == NPCID.MothronEgg ||
+                    npc.type == NPCID.MothronSpawn
                 )
                 {
                     npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                    npc.damage = (int)Math.Round(npc.damage * 1.25);
+                }
+
+                //Boss buffs
+
+                if (npc.type == NPCID.EyeofCthulhu)
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                    if (Main.getGoodWorld)
+                    {
+                        npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.5));
+                    }
+                    else
+                    {
+                        npc.damage = (int)Math.Round(npc.damage * 1.5);
+                    }
+                }
+                if (npc.type == NPCID.KingSlime)
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                    if (Main.getGoodWorld)
+                    {
+                        npc.damage = (int)Math.Round(npc.damage * Math.Sqrt(1.25));
+                    }
+                    else
+                    {
+                        npc.damage = (int)Math.Round(npc.damage * 1.25);
+                    }
+                }
+                if (npc.type == NPCID.BrainofCthulhu)
+                {
+                    if (Main.getGoodWorld)
+                    {
+                        npc.defense -= 10;
+                        npc.knockBackResist = 1.25f;
+                    }
+                    else
+                    {
+                        npc.knockBackResist = 0f;
+                    }
+                }
+                if (npc.type == NPCID.Creeper)
+                {
+                    if (Main.getGoodWorld)
+                    {
+                        npc.knockBackResist = 2.5f;
+                    }
+                }
+                if
+                (
+                    npc.type == NPCID.Plantera
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                }
+                if
+                (
+                    npc.type == NPCID.Golem ||
+                    npc.type == NPCID.GolemHead ||
+                    npc.type == NPCID.GolemFistLeft ||
+                    npc.type == NPCID.GolemFistRight ||
+                    npc.type == NPCID.GolemHeadFree
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                }
+                if (npc.type == NPCID.HallowBoss)
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
+                }
+                if (npc.type == NPCID.CultistBoss)
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.125);
+                }
+                if
+                (
+                    npc.type == NPCID.MoonLordCore ||
+                    npc.type == NPCID.MoonLordHead ||
+                    npc.type == NPCID.MoonLordHand ||
+                    npc.type == NPCID.MoonLordFreeEye ||
+                    npc.type == NPCID.MoonLordLeechBlob
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                }
+                if (npc.type == NPCID.VileSpitEaterOfWorlds)
+                {
+                    npc.dontTakeDamage = true;
+                }
+                if
+                (
+                    npc.type == NPCID.Pumpking ||
+                    npc.type == NPCID.PumpkingBlade
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                    npc.damage = (int)Math.Round(npc.damage * 1.25);
+                }
+                if
+                (
+                    npc.type == NPCID.IceQueen
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                }
+                if
+                (
+                    npc.type == NPCID.MartianSaucer ||
+                    npc.type == NPCID.MartianSaucerCannon ||
+                    npc.type == NPCID.MartianSaucerCore ||
+                    npc.type == NPCID.MartianSaucerTurret
+                )
+                {
+                    npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                }
+                if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
+                {
+                    //Buff Thorium Bosses Accordingly
+                    if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_VC))
+                    {
+                        npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.35);
+                    }
+                    if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS))
+                    {
+                        npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                        npc.damage = (int)Math.Round(npc.damage * 1.125);
+                    }
+                    if (npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V1) || npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_LI_V2))
+                    {
+                        npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                    }
+                    if
+                    (
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_OLD) ||
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SFF) ||
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
+                    )
+                    {
+                        npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.25);
+                    }
+                    if
+                    (
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET)
+                    )
+                    {
+                        npc.lifeMax = (int)Math.Round(npc.lifeMax * 1.5);
+                    }
                 }
             }
             base.SetDefaults(npc);
@@ -384,30 +387,33 @@ namespace WeDoALittleBalancing.Content.NPCs
             {
                 return;
             }
-            if (BuffGroup100Percent.Contains(npc.type))
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRebalancing)
             {
-                npc.damage = (int)Math.Round(npc.damage * 2.0);
-                npc.netUpdate = true;
-            }
-            if (BuffGroup25Percent.Contains(npc.type))
-            {
-                npc.damage = (int)Math.Round(npc.damage * 1.25);
-                npc.netUpdate = true;
-            }
-            if (NerfGroup25Percent.Contains(npc.type))
-            {
-                npc.damage = (int)Math.Round(npc.damage * 0.75);
-                npc.netUpdate = true;
-            }
-            if (NerfGroup35Percent.Contains(npc.type))
-            {
-                npc.damage = (int)Math.Round(npc.damage * 0.65);
-                npc.netUpdate = true;
-            }
-            if (NerfGroup50Percent.Contains(npc.type))
-            {
-                npc.damage = (int)Math.Round(npc.damage * 0.5);
-                npc.netUpdate = true;
+                if (BuffGroup100Percent.Contains(npc.type))
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 2.0);
+                    npc.netUpdate = true;
+                }
+                if (BuffGroup25Percent.Contains(npc.type))
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 1.25);
+                    npc.netUpdate = true;
+                }
+                if (NerfGroup25Percent.Contains(npc.type))
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 0.75);
+                    npc.netUpdate = true;
+                }
+                if (NerfGroup35Percent.Contains(npc.type))
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 0.65);
+                    npc.netUpdate = true;
+                }
+                if (NerfGroup50Percent.Contains(npc.type))
+                {
+                    npc.damage = (int)Math.Round(npc.damage * 0.5);
+                    npc.netUpdate = true;
+                }
             }
             base.OnSpawn(npc, source);
         }
@@ -418,70 +424,76 @@ namespace WeDoALittleBalancing.Content.NPCs
             {
                 return;
             }
-            if (BuffGroup100Percent.Contains(npc.type))
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRebalancing)
             {
-                projectile.damage = (int)Math.Round(projectile.damage * 2.0);
-                projectile.netUpdate = true;
-            }
-            if (BuffGroup25Percent.Contains(npc.type))
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 1.25);
-                projectile.netUpdate = true;
-            }
-            if (NerfGroup25Percent.Contains(npc.type))
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 0.75);
-                projectile.netUpdate = true;
-            }
-            if (NerfGroup35Percent.Contains(npc.type))
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 0.65);
-                projectile.netUpdate = true;
-            }
-            if (NerfGroup50Percent.Contains(npc.type))
-            {
-                projectile.damage = (int)Math.Round(projectile.damage * 0.5);
-                projectile.netUpdate = true;
-            }
-            if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
-            {
-                //Buff Thorium Bosses Accordingly
-                if
-                (
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS)
-                )
+                if (BuffGroup100Percent.Contains(npc.type))
                 {
-                    projectile.damage = (int)Math.Round(projectile.damage * 1.125);
+                    projectile.damage = (int)Math.Round(projectile.damage * 2.0);
                     projectile.netUpdate = true;
+                }
+                if (BuffGroup25Percent.Contains(npc.type))
+                {
+                    projectile.damage = (int)Math.Round(projectile.damage * 1.25);
+                    projectile.netUpdate = true;
+                }
+                if (NerfGroup25Percent.Contains(npc.type))
+                {
+                    projectile.damage = (int)Math.Round(projectile.damage * 0.75);
+                    projectile.netUpdate = true;
+                }
+                if (NerfGroup35Percent.Contains(npc.type))
+                {
+                    projectile.damage = (int)Math.Round(projectile.damage * 0.65);
+                    projectile.netUpdate = true;
+                }
+                if (NerfGroup50Percent.Contains(npc.type))
+                {
+                    projectile.damage = (int)Math.Round(projectile.damage * 0.5);
+                    projectile.netUpdate = true;
+                }
+                if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
+                {
+                    //Buff Thorium Bosses Accordingly
+                    if
+                    (
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_SCS)
+                    )
+                    {
+                        projectile.damage = (int)Math.Round(projectile.damage * 1.125);
+                        projectile.netUpdate = true;
+                    }
                 }
             }
         }
 
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if
-            (
-                npc.type == NPCID.PossessedArmor || //Possessed Armors, Lihzards, Flying Snakes and Rock Golems have 50% DR%
-                npc.type == NPCID.Lihzahrd ||
-                npc.type == NPCID.LihzahrdCrawler ||
-                npc.type == NPCID.FlyingSnake
-            )
-            {
-                modifiers.SourceDamage *= 0.75f;
-            }
-            if (npc.type == NPCID.Gnome) //I'm gnot a gnelf. I'm gnot a gnoblin. I'm a GNOME! Any you've been GNOOOOOOOMED! Gnomes have 90% DR%
-            {
-                modifiers.SourceDamage *= 0.5f;
-            }
-            if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRebalancing)
             {
                 if
                 (
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET) ||
-                    npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
+                    npc.type == NPCID.PossessedArmor || //Possessed Armors, Lihzards, Flying Snakes and Rock Golems have 50% DR%
+                    npc.type == NPCID.Lihzahrd ||
+                    npc.type == NPCID.LihzahrdCrawler ||
+                    npc.type == NPCID.FlyingSnake
                 )
                 {
-                    modifiers.FinalDamage *= 0.75f;
+                    modifiers.SourceDamage *= 0.75f;
+                }
+                if (npc.type == NPCID.Gnome) //I'm gnot a gnelf. I'm gnot a gnoblin. I'm a GNOME! Any you've been GNOOOOOOOMED! Gnomes have 90% DR%
+                {
+                    modifiers.SourceDamage *= 0.5f;
+                }
+                if (WDALBModSystem.isThoriumModPresent && WDALBModSystem.MCIDIntegrity)
+                {
+                    if
+                    (
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_AET) ||
+                        npc.type == WDALBModContentID.GetThoriumBossNPCID(WDALBModContentID.ThoriumBoss_DE)
+                    )
+                    {
+                        modifiers.FinalDamage *= 0.75f;
+                    }
                 }
             }
             base.ModifyIncomingHit(npc, ref modifiers);
@@ -494,7 +506,10 @@ namespace WeDoALittleBalancing.Content.NPCs
 
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
-            ApplyDebuffsToPlayerBasedOnNPC(npc.type, target);
+            if (!ModContent.GetInstance<WDALBServerConfig>().DisableRebalancing)
+            {
+                ApplyDebuffsToPlayerBasedOnNPC(npc.type, target);
+            }
         }
 
         public static void ApplyDebuffsToPlayerBasedOnNPC(int npcType, Player target)
