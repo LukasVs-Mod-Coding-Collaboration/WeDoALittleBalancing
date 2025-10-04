@@ -1,6 +1,8 @@
-# WeDoALittleQualityOfLife
+# WeDoALittleBalancing
 
-Quality Of Life component of a fairly simple Terraria Mod that adds some funny stuff to the game and rebalances some things also.
+This Mod used to be the balancing component of a fairly simple Terraria Mod that adds some funny stuff to the game and rebalances some things also.
+
+It is now included in WeDoALittleTrolling again and the independent mod has been archived here.
 
 Built with [tModLoader](https://www.tmodloader.net/) using [Microsoft .NET](https://dotnet.microsoft.com/) and [Microsoft Visual Studio / Visual Studio Code](https://visualstudio.microsoft.com).
 
